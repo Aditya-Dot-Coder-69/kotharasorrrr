@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Cafe - Demo Page</title>
+<style>
+  :root {
+    --cream: #faf6ef;
+    --ink: #2b2118;
+    --muted: #7a6a5a;
+    --accent: #b5582c;
+    --card: #ffffff;
+    --line: #ead9c6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+  header.hero {
+    background: linear-gradient(135deg, #d9a77b 0%, #b5582c 100%);
+    color: #fff;
+    text-align: center;
+    padding: 56px 20px 48px;
+  }
+  .hero h1 { font-size: 2.2rem; letter-spacing: 0.5px; }
+  .hero p { opacity: 0.92; margin-top: 8px; }
+  .hero .actions { margin-top: 22px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid #fff;
+  }
+  .btn.solid { background: #fff; color: var(--accent); }
+  .btn.ghost { color: #fff; }
+  nav.top {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+  nav.top a { text-decoration: none; color: var(--muted); }
+  nav.top a:hover { color: var(--accent); }
+  main { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; }
+  section { margin-top: 48px; }
+  h2 { font-size: 1.6rem; margin-bottom: 6px; }
+  .sub { color: var(--muted); margin-bottom: 20px; }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .menu-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .swatch { height: 110px; }
+  img.swatch { width: 100%; height: 180px; object-fit: cover; display: block; }
+  .menu-card .body { padding: 14px 16px 16px; }
+  .menu-card h3 { font-size: 1.05rem; display: flex; justify-content: space-between; gap: 8px; }
+  .price { color: var(--accent); white-space: nowrap; }
+  .menu-card p { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+  .tag { display: inline-block; font-size: 0.72rem; background: #f3e4d4; color: var(--accent); padding: 2px 8px; border-radius: 999px; margin-top: 8px; }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .gallery div {
+    height: 150px;
+    border-radius: 12px;
+    display: flex; align-items: flex-end; padding: 10px;
+    color: #fff; font-size: 0.85rem; font-weight: 600;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .card h3 { margin-bottom: 8px; }
+  .hours td { padding: 4px 12px 4px 0; }
+  .hours td:first-child { color: var(--muted); }
+  form.book { display: grid; gap: 12px; }
+  form.book label { font-size: 0.9rem; color: var(--muted); display: grid; gap: 4px; }
+  form.book input, form.book select {
+    font: inherit;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+  }
+  form.book button {
+    font: inherit; font-weight: 600;
+    padding: 12px;
+    border: 0; border-radius: 10px;
+    background: var(--accent); color: #fff;
+    cursor: pointer;
+  }
+  .wa {
+    display: inline-block; margin-top: 12px;
+    background: #25d366; color: #fff;
+    padding: 10px 18px; border-radius: 999px;
+    text-decoration: none; font-weight: 600;
+  }
+  .note { font-size: 0.82rem; color: var(--muted); margin-top: 10px; }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 30px 20px;
+    border-top: 1px solid var(--line);
+  }
+  .demo-banner {
+    background: #fff3c4; color: #5a4300;
+    text-align: center; font-size: 0.85rem;
+    padding: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">Sample demo page. Replace the placeholder name, photos, prices and details with the cafe's real information.</div>
+
+<header class="hero">
+  <h1>Sample Cafe</h1>
+  <p>Slow coffee, warm bakes and a quiet corner for your next idea</p>
+  <div class="actions">
+    <a class="btn solid" href="#menu">View menu</a>
+    <a class="btn ghost" href="#reserve">Reserve a table</a>
+  </div>
+</header>
+
+<nav class="top">
+  <a href="#menu">Menu</a>
+  <a href="#ambience">Ambience</a>
+  <a href="#offers">Offers</a>
+  <a href="#reserve">Reserve</a>
+  <a href="#visit">Visit us</a>
+</nav>
+
+<main>
+
+  <section id="menu">
+    <h2>Menu</h2>
+    <p class="sub">Prices in INR, inclusive of taxes. Ask us about today's special.</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <img class="swatch" src="images/chola-bature.jpg" alt="Chola Bature">
+        <div class="body">
+          <h3>Chola Bature <span class="price">₹120</span></h3>
+          <p>Crispy bhatura served with spiced chickpea curry.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="swatch" src="images/chicken-chaap.jpg" alt="Chicken Chaap">
+        <div class="body">
+          <h3>Chicken Chaap <span class="price">₹260</span></h3>
+          <p>Tender chicken in a rich, spiced gravy.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="swatch" src="images/dahi-vada.jpg" alt="Dahi Vada">
+        <div class="body">
+          <h3>Dahi Vada <span class="price">₹110</span></h3>
+          <p>Soft lentil dumplings in creamy yogurt.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="swatch" src="images/chicken-biryani.jpg" alt="Chicken Biryani">
+        <div class="body">
+          <h3>Chicken Biryani <span class="price">₹250</span></h3>
+          <p>Fragrant basmati rice with chicken.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="swatch" src="images/mutton-biryani.jpg" alt="Mutton Biryani">
+        <div class="body">
+          <h3>Mutton Biryani <span class="price">₹320</span></h3>
+          <p>Fragrant basmati rice with slow-cooked mutton and egg.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="swatch" style="background: linear-gradient(135deg,#c7a6d6,#6e4a86)"></div>
+        <div class="body">
+          <h3>Blueberry Cheesecake <span class="price">₹210</span></h3>
+          <p>Baked New York style, with a berry compote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ambience">
+    <h2>Ambience</h2>
+    <p class="sub">A relaxed space for study sessions, catch-ups and slow mornings.</p>
+    <div class="gallery">
+      <div style="background: linear-gradient(135deg,#c98e4b,#7a4a24)">Main seating area</div>
+      <div style="background: linear-gradient(135deg,#8fa37f,#3f5a37)">Garden corner</div>
+      <div style="background: linear-gradient(135deg,#d6b48a,#8c5b34)">Window bar</div>
+      <div style="background: linear-gradient(135deg,#a48bb0,#5b4370)">Evening lounge</div>
+    </div>
+    <p class="note">Replace these blocks with real photos of the cafe's interior and seating.</p>
+  </section>
+
+  <section id="offers">
+    <h2>This week</h2>
+    <p class="sub">Updated by the cafe team.</p>
+    <div class="info-grid">
+      <div class="card">
+        <h3>Student hour</h3>
+        <p>10% off all coffees, 2 to 4 pm on weekdays. Show a valid ID.</p>
+      </div>
+      <div class="card">
+        <h3>Weekend brunch</h3>
+        <p>Pancake stack and cold brew combo, Saturday and Sunday until 1 pm.</p>
+      </div>
+      <div class="card">
+        <h3>Open mic night</h3>
+        <p>Every Friday at 7 pm. Sign up at the counter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reserve">
+    <h2>Reserve a table</h2>
+    <p class="sub">We will confirm by phone or WhatsApp within 30 minutes.</p>
+    <div class="info-grid">
+      <form class="card book" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request sent. We will confirm soon.';">
+        <label>Name
+          <input type="text" required placeholder="Your name">
+        </label>
+        <label>Phone
+          <input type="tel" required placeholder="+91 00000 00000">
+        </label>
+        <label>Date
+          <input type="date" required>
+        </label>
+        <label>Time
+          <select required>
+            <option>9:00 am</option>
+            <option>12:00 pm</option>
+            <option>3:00 pm</option>
+            <option>6:00 pm</option>
+            <option>8:00 pm</option>
+          </select>
+        </label>
+        <label>Guests
+          <select>
+            <option>1</option><option selected>2</option><option>3-4</option><option>5-8</option>
+          </select>
+        </label>
+        <button type="submit">Request table</button>
+      </form>
+      <div class="card">
+        <h3>Prefer to message?</h3>
+        <p>Send us a WhatsApp message with the date, time and number of guests.</p>
+        <a class="wa" href="https://wa.me/910000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <p class="note">Replace the number with the cafe's real WhatsApp number.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <h2>Visit us</h2>
+    <p class="sub">Find us near the main road, opposite the bus stop.</p>
+    <div class="info-grid">
+      <div class="card">
+        <h3>Address</h3>
+        <p>123 Sample Street, Near Landmark<br>Your City, State 700000</p>
+        <p style="margin-top:10px;">
+          <a href="https://maps.google.com/?q=Sample+Cafe" target="_blank" rel="noopener">Open in Google Maps</a>
+        </p>
+        <p style="margin-top:6px;">Phone: +91 00000 00000</p>
+      </div>
+      <div class="card">
+        <h3>Opening hours</h3>
+        <table class="hours">
+          <tr><td>Mon to Fri</td><td>8:00 am to 10:30 pm</td></tr>
+          <tr><td>Saturday</td><td>9:00 am to 11:30 pm</td></tr>
+          <tr><td>Sunday</td><td>9:00 am to 11:00 pm</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Sample Cafe · Follow us on Instagram · Pay by UPI, card or cash</p>
+  <p style="margin-top:6px;">Website by [Your Name]</p>
+</footer>
+
+</body>
+</html>
